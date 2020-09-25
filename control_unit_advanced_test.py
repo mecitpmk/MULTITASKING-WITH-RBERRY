@@ -31,25 +31,25 @@ class DATAPROCESS:
             self.data_dict["ALTITUDE"].append(value)
 
     def READ_PRESSUREIN(self):
-        for i in range(200):
+        for i in range(200): #NORMALDE WHILE TRUE OLACAK VERI AKISINI GORMEK ICIN FOR LOOP DONDURDUM.
             time.sleep(0.05)
             value = self.return_data()
             self.data_dict["PRESSUREIN"].append(value)
     
     def READ_GPS(self):
-        for i in range(200):
+        for i in range(200): #NORMALDE WHILE TRUE OLACAK VERI AKISINI GORMEK ICIN FOR LOOP DONDURDUM.
             time.sleep(0.05)
             value = self.return_data()
             self.data_dict["GPS"].append(value)
     
     def READ_PRESSUREOUT(self):
-        for i in range(200):
+        for i in range(200): #NORMALDE WHILE TRUE OLACAK VERI AKISINI GORMEK ICIN FOR LOOP DONDURDUM.
             time.sleep(0.05)
             value = self.return_data()
             self.data_dict["PRESSUREOUT"].append(value)
     
     def READ_HALLEFFECT(self):
-        for i in range(200):
+        for i in range(200): #NORMALDE WHILE TRUE OLACAK VERI AKISINI GORMEK ICIN FOR LOOP DONDURDUM.
             time.sleep(0.05)
             value = self.return_data()
             self.data_dict["HALLEFFECT"].append(value)
@@ -60,7 +60,7 @@ class DATAPROCESS:
             self.data_dict["GYRO"].append(value)
 
     def READ_TEMP(self):
-        for i in range(200):
+        for i in range(200): #NORMALDE WHILE TRUE OLACAK VERI AKISINI GORMEK ICIN FOR LOOP DONDURDUM.
             time.sleep(0.05)
             value = self.return_data()
             self.data_dict["TEMP"].append(value)
@@ -102,7 +102,7 @@ class DATAPROCESS:
         #     self.READ_PRESSUREIN()
         altitude_thread = threading.Thread(target=self.READ_ALTITUDE)
         pressure_in_thread = threading.Thread(target=self.READ_PRESSUREIN)
-        thread_tuple = (altitude_thread,pressure_in_thread)
+        thread_tuple = (altitude_thread,pressure_in_thread) # LIST ICINDE DEGIL TUPLE ICINDE CUNKU TUPLE'NIN ITERATE HIZI LISTEYE GORE DAHA HIZLIDIR.
         for i in thread_tuple:i.start()
         for i in thread_tuple:i.join()
 
@@ -122,7 +122,7 @@ class DATAPROCESS:
         gps_thread = threading.Thread(target=self.READ_GPS)
         pressure_out_thread = threading.Thread(target=self.READ_PRESSUREOUT)
         hall_effect_thread = threading.Thread(target=self.READ_HALLEFFECT)
-        thread_tuple = (gps_thread,pressure_out_thread,hall_effect_thread)
+        thread_tuple = (gps_thread,pressure_out_thread,hall_effect_thread) # LIST ICINDE DEGIL TUPLE ICINDE CUNKU TUPLE'NIN ITERATE HIZI LISTEYE GORE DAHA HIZLIDIR.
         for i in thread_tuple:i.start()
         for i in thread_tuple:i.join()
 
@@ -132,7 +132,7 @@ class DATAPROCESS:
         #     self.READ_TEMP()
         gyro_thread = threading.Thread(target=self.READ_GYRO)
         temp_thread = threading.Thread(target=self.READ_TEMP)
-        thread_tuple = (gyro_thread,temp_thread)
+        thread_tuple = (gyro_thread,temp_thread) # LIST ICINDE DEGIL TUPLE ICINDE CUNKU TUPLE'NIN ITERATE HIZI LISTEYE GORE DAHA HIZLIDIR.
         for i in thread_tuple:i.start()
         for i in thread_tuple:i.join()
         
@@ -154,7 +154,7 @@ class DATAPROCESS:
         process3 = multiprocessing.Process(target=self.third_cpu)
         process4 = multiprocessing.Process(target=self.fourth_cpu)
 
-        proccess_tuples = (process1,process2,process3,process4)
+        proccess_tuples = (process1,process2,process3,process4) # LIST ICINDE DEGIL TUPLE ICINDE CUNKU TUPLE'NIN ITERATE HIZI LISTEYE GORE DAHA HIZLIDIR.
         self.t1 = multiprocessing.Manager().Value("time",time.time())
         for functs in proccess_tuples:functs.start()
         for functs in proccess_tuples:functs.join()
